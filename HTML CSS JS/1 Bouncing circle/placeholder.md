@@ -33,15 +33,23 @@
 - [ ] Make Websites  
     - [ ] Buy my own domain  
     - [ ] Make my own portfolio  
-- [ ] Reach 100 subs  
+- [ ] Build Up YT Channel
+    - [ ] 100 subscribers
+    - [ ] buy more ram
 - [ ] Learn C, Rust, JavaScript, Lua, Python  
+    - [ ] Be comfortable with OOP
 - [ ] Make Projects
     - [ ] Pomodoro android app 
 - [ ] Self-teach Math  
     - [ ] Learn vectors  
     - [ ] Learn logarithm  
     - [ ] Learn calculus
+    - [ ] Learn trigonometry
+        - [ ] unit circle's values
+        - [ ] Inverse Trigonometry
 - [ ] Be The Anki Master
+    - [ ] 300 learnt cards
+    - [ ] 600 learnt cards
 
 </div>
 

@@ -1,49 +1,44 @@
-let canvas = document.querySelector("canvas")
-
-let colorTable = [
-    "green", "red", "blue",
-    "purple",
-]
-
-let pi = Math.PI
 let random = Math.random
 let cos = Math.cos
 let sin = Math.sin
+let pi = Math.PI
+let atan2 = Math.atan2
 
+let canvas = document.querySelector("canvas")
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 let vid = canvas.getContext("2d")
 
-vid.fillStyle = colorTable[2]
-vid.fillRect(100, 100, 100, 100)
-
-let cirVec2 = { x: random() * innerWidth, y: random() * innerHeight }
-let cirAngle = random() * pi * 2
-let cirSpeed = random() * 7
-let cirVelocity2D = [cos(cirAngle) * cirSpeed, sin(cirAngle) * cirSpeed]
-
-console.log(Math.sqrt(6 ** 2 + (-3) ** 2))
-let cirRadius = 50
-
-function animate() {
-    requestAnimationFrame(animate)
-    vid.clearRect(0, 0, innerWidth, innerHeight)
-    vid.beginPath()
-    let cirPos = [cirVec2.x, cirVec2.y]
-    vid.arc(...cirPos, cirRadius, 0, pi * 2, false)
-    vid.stroke()
-
-    if (cirVec2.x + cirRadius > innerWidth || cirVec2.x - cirRadius < 0) {
-        cirVelocity2D[0] *= -1
-    }
-
-    if (cirVec2.y - cirRadius < 0 || cirVec2.y + cirRadius > innerHeight) {
-        cirVelocity2D[1] *= -1
-    }
-
-    cirVec2.x += cirVelocity2D[0]
-    cirVec2.y += cirVelocity2D[1]
+let cir1 = {
+    pos: [100, 300],
+    angle: random() * 2 * pi,
+    velocity: 15,
+    size: 60,
 }
 
-animate()
+console.log(sin(cir1.angle))
+
+function update() {
+    requestAnimationFrame(update)
+    vid.clearRect(0, 0, innerWidth, innerHeight)
+    vid.beginPath()
+    vid.arc(...cir1.pos, cir1.size, 0, pi * 2, false)
+    vid.stroke()
+    cir1.pos[0] += cos(cir1.angle) * cir1.velocity
+    cir1.pos[1] -= sin(cir1.angle) * cir1.velocity
+    if (cir1.pos[1] + cir1.size > innerHeight) {
+        cir1.angle = atan2(-sin(cir1.angle), cos(cir1.angle))
+    }
+    if (cir1.pos[1] - cir1.size < 0) {
+        cir1.angle = atan2(-sin(cir1.angle), cos(cir1.angle))
+    }
+    if (cir1.pos[0] + cir1.size > innerWidth) {
+        cir1.angle = atan2(sin(cir1.angle), -cos(cir1.angle))
+    }
+    if (cir1.pos[0] - cir1.size < 0) {
+        cir1.angle = atan2(sin(cir1.angle), -cos(cir1.angle))
+    }
+}
+
+update()
