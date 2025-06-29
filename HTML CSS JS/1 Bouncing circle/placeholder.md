@@ -40,6 +40,7 @@
     - [ ] Be comfortable with OOP
 - [ ] Make Projects
     - [ ] Pomodoro android app 
+    - [ ] Monthly expense app
 - [ ] Self-teach Math  
     - [ ] Learn vectors  
     - [ ] Learn logarithm  
