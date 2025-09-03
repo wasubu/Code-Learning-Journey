@@ -1,0 +1,62 @@
+let canvas = document.querySelector("canvas")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+let vid = canvas.getContext('2d')
+
+class Piano {
+    constructor() {
+        this.pos = [innerWidth / 2, 150]
+        this.width = 750
+        this.height = 450
+        this.whiteWidth = 40
+        this.whiteHeight = 200
+        this.blackWidth = 30
+    }
+
+    draw() {
+        // vid.fillRect(150, 150, 400, 100)
+        let drawAtX = this.pos[0] - this.width / 2
+        let drawAtY = this.pos[1]
+        vid.roundRect(drawAtX, drawAtY, this.width, this.height)
+        vid.fillStyle = "#666666"
+        vid.fill()
+        vid.stroke()
+        vid.fillStyle = "white"
+        for (let i = 0; i < 16; i++) {
+            let whitePos = [
+                drawAtX + 10 + i * 46,
+                this.pos[1] + this.height - this.whiteHeight - 10
+            ]
+            vid.fillRect(...whitePos, this.whiteWidth, this.whiteHeight)
+        }
+        for (let i = 0; i < 15; i++) {
+            let show = [
+                true, true, false, true, true, true
+            ]
+            let blackPos = [
+                drawAtX + 32 + this.whiteWidth / 2 + i * 46 - this.blackWidth / 2,
+                this.pos[1] + this.height - this.whiteHeight - 10
+            ]
+            let showThis = show[i % show.length + 1]
+            if (showThis) {
+                console.log(((i - 1) % show.length) + 1)
+                vid.fillStyle = "black"
+                vid.fillRect(...blackPos, this.blackWidth, 50)
+            }
+        }
+    }
+}
+
+let piano = new Piano()
+
+function update() {
+    // requestAnimationFrame(update)
+    vid.clearRect(0, 0, innerWidth, innerHeight)
+    vid.fillStyle = "#f9ff9e"
+    vid.fillRect(0, 0, canvas.width, canvas.height)
+    piano.draw()
+}
+
+update()

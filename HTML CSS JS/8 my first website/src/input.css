@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-asimovian: "Asimovian", sans-serif;
+  --color-near: #121227;
+}
+
+@layer components {
+  .navItem {
+    @apply h-[80px];
+  }
+
+  .navLink {
+    @apply text-amber-300 flex items-center justify-center no-underline h-full px-4 hover:text-green-400 duration-200 ease-out;
+  }
+}
